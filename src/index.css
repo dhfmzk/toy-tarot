@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-900: #0D0B21;
+  --color-brand-800: #201D4C;
+  --color-brand-700: #39337F;
+  --color-brand-500: #574BDB;
+  --color-brand-300: #A8A1FC;
+  --color-brand-100: #F2EFFF;
+  --color-accent: #FFE500;
+}
+
+@layer utilities {
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  .transform-style-3d {
+    transform-style: preserve-3d;
+  }
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .custom-scrollbar::-webkit-scrollbar {
+    height: 10px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: var(--color-brand-900);
+    border-radius: 10px;
+    border: 1px solid var(--color-brand-800);
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--color-brand-500);
+    border-radius: 10px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: var(--color-brand-300);
+  }
+  .animate-twinkle {
+    animation: twinkle 2s ease-in-out infinite alternate;
+  }
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+  .animate-slow-twinkle {
+    animation: slow-twinkle ease-in-out infinite alternate;
+  }
+  .animate-blink {
+    animation: blink 4s infinite;
+  }
+}
+
+@layer base {
+  @keyframes twinkle {
+    0% { opacity: 0.4; }
+    100% { opacity: 1; filter: drop-shadow(0 0 6px rgba(255, 229, 0, 0.6)); }
+  }
+  @keyframes slow-twinkle {
+    0% { opacity: 0.1; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1.1); }
+  }
+  @keyframes blink {
+    0%, 96%, 98%, 100% { transform: scaleY(1); }
+    97% { transform: scaleY(0.1); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  @keyframes bgStars {
+    0% { background-position: 0px 0px; }
+    100% { background-position: 80px 80px; }
+  }
+
+  body {
+    background: linear-gradient(135deg, #070B1F 0%, #15133C 50%, #070B1F 100%);
+    background-attachment: fixed;
+    color: var(--color-brand-100);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-brand-500);
+    border-radius: 8px;
+    opacity: 0.5;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-brand-300);
+  }
+}
